@@ -5,6 +5,7 @@ import '../../providers/app_provider.dart';
 import '../../data/app_theme.dart';
 import '../../data/subjects_data.dart';
 import '../lesson_screen.dart';
+import '../settings_screen.dart';
 
 List<SubjectData> _subjectsFor(String cat) =>
     cat == 'academic' ? AppData.academicSubjects : AppData.nonAcademicSubjects;
@@ -36,9 +37,13 @@ class HomeTab extends StatelessWidget {
         ]),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 16),
+            padding: const EdgeInsets.only(right: 8),
             child: Center(child: Text('🔥 ${user.streak}',
                 style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700))),
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings_outlined, color: AppTheme.purple),
+            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SettingsScreen())),
           ),
         ],
       ),
