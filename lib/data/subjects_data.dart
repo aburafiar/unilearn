@@ -4,6 +4,7 @@ class SubjectData {
   final int color;
   final int lightColor;
   final List<String> topics;
+  final List<String> content;
   final List<String> experiments;
   final List<String> disclaimers;
 
@@ -13,6 +14,7 @@ class SubjectData {
     required this.color,
     required this.lightColor,
     required this.topics,
+    required this.content,
     required this.experiments,
     required this.disclaimers,
   });
@@ -34,6 +36,16 @@ class AppData {
         'Energy & Its Types',
         'Magnetism',
         'Heat & Temperature',
+      ],
+      content: [
+        'A force is a push or a pull. Every time you push a door open or pull a rope, you are using force! Forces can make things start moving, stop moving, speed up, slow down, or change direction. Bigger forces cause bigger changes.',
+        'Light travels in straight lines until it hits something. When light bounces off a smooth surface like a mirror, we call it reflection. That is exactly how you see your own face in a mirror — the light from your face bounces back to your eyes!',
+        'Electricity is a flow of tiny particles called electrons moving through a wire. When they flow in a complete loop (called a circuit), they can power a light bulb or a toy. If the loop breaks, the electricity stops flowing.',
+        'Sound is made by vibrations — things moving back and forth very fast. When you clap, the air vibrates and travels to your ears as sound waves. The faster the vibration, the higher the pitch of the sound.',
+        'Gravity is the invisible force that pulls everything down towards the Earth. It is why things fall when you drop them, and why we stay on the ground instead of floating away! Every object with mass has some gravity.',
+        'Energy is what makes things happen — it cannot be created or destroyed, only changed from one form to another. Movement energy, heat energy, light energy, and stored energy are all types you see every day.',
+        'Magnets have an invisible force field that pulls certain metals towards them, like iron and steel. Every magnet has two ends called poles — a north pole and a south pole. Opposite poles attract, same poles push apart.',
+        'Heat is energy moving from a warmer object to a cooler one. Temperature tells us how hot or cold something is. When you touch something hot, heat energy flows from it into your hand — that is why it feels warm!',
       ],
       experiments: [
         'Roll a ball down a ramp and measure how far it goes',
@@ -66,6 +78,16 @@ class AppData {
         'Decimals & Percentages',
         'Area & Perimeter',
       ],
+      content: [
+        'Every digit in a number has a value based on its position — this is called place value. In the number 352, the 3 means 300, the 5 means 50, and the 2 means 2. Understanding place value helps you read and compare big numbers easily.',
+        'A fraction shows a part of a whole, like half a pizza or a quarter of an hour. The top number (numerator) tells you how many parts you have, and the bottom number (denominator) tells you how many equal parts the whole is split into.',
+        'Algebra uses letters like x or y to stand for unknown numbers. If x + 5 = 12, we can figure out that x must be 7. It is like solving a puzzle to find the missing number!',
+        'Geometry is the study of shapes, sizes, and space. Every shape has properties — a triangle has 3 sides, a square has 4 equal sides. Learning to spot these properties helps you understand the world around you.',
+        'Probability tells us how likely something is to happen, from impossible (0) to certain (1). Flipping a coin has a 50/50 chance of heads or tails — that is probability in action!',
+        'A ratio compares two amounts, like 2 cups of flour to 1 cup of sugar. Proportions are two ratios that are equal to each other. Ratios help us scale recipes, maps, and models up or down.',
+        'Decimals are another way to write fractions, using a dot to separate whole numbers from parts. Percentages show a number out of 100 — 50% means half, and 100% means the whole thing.',
+        'Perimeter is the distance all the way around a shape — like walking around the edge of a garden. Area is the amount of space inside a shape — like how much grass covers that garden.',
+      ],
       experiments: [
         'Count objects in your room and group them by tens',
         'Cut a pizza or sandwich into equal parts',
@@ -95,6 +117,16 @@ class AppData {
         'DNA & Genetics Basics',
         'Microorganisms',
         'Evolution in Simple Terms',
+      ],
+      content: [
+        'Cells are the tiny building blocks that make up every living thing, including you! Some living things are made of just one cell, while humans are made of trillions of cells working together.',
+        'Your body has different systems working as a team — the digestive system breaks down food, the circulatory system pumps blood, and the nervous system sends messages using your brain. They all depend on each other.',
+        'Plants make their own food using sunlight, water, and air in a process called photosynthesis. They take in carbon dioxide and release oxygen — the very air we breathe to stay alive!',
+        'A food chain shows who eats who in nature, starting with plants and moving up to animals. An ecosystem is a whole community of living things and their environment working together.',
+        'Your skeleton is made of over 200 bones that give your body shape, protect your organs, and let you move. Bones are living tissue that grow and repair themselves throughout your life.',
+        'DNA is like an instruction manual inside every cell that tells your body how to grow and what you look like. You inherit your DNA from your parents — that is why you might look like your mum or dad.',
+        'Microorganisms are living things too small to see without a microscope, like bacteria and viruses. Some help us, like the bacteria that help digest food, while others can make us sick.',
+        'Evolution means living things slowly change over many generations to survive better in their environment. Animals with helpful traits are more likely to survive and pass those traits to their babies.',
       ],
       experiments: [
         'Look at an onion skin under a magnifying glass',
@@ -127,6 +159,16 @@ class AppData {
         'Combustion & Burning',
         'Metals & Non-Metals',
       ],
+      content: [
+        'Atoms are the tiny particles that make up everything around us — even you! When atoms join together, they form molecules. Water is a molecule made of two hydrogen atoms and one oxygen atom.',
+        'Elements are pure substances made of only one type of atom, like oxygen or gold. Scientists organise all known elements into a chart called the Periodic Table, grouped by their properties.',
+        'Acids taste sour (like lemons) and bases feel slippery (like soap). Scientists use a scale called pH to measure how acidic or basic something is, from 0 (very acidic) to 14 (very basic).',
+        'A chemical reaction happens when substances combine and change into something new — like when baking soda and vinegar mix and fizz! The atoms rearrange to form different molecules.',
+        'Matter exists in three main states: solid (like ice), liquid (like water), and gas (like steam). Heating or cooling matter can change it from one state to another.',
+        'A mixture is when two or more substances are combined but keep their own properties, like sand and water. A solution is a special mixture where one substance dissolves completely into another, like sugar in tea.',
+        'Combustion is a chemical reaction where a substance burns using oxygen, releasing heat and light. This is what happens when a candle burns or wood catches fire.',
+        'Metals are usually shiny, bend without breaking, and conduct electricity well, like copper and iron. Non-metals like sulphur or oxygen tend to be dull and do not conduct electricity as well.',
+      ],
       experiments: [
         'Build an atom model using clay and cocktail sticks',
         'Find 5 elements mentioned on household products',
@@ -158,6 +200,16 @@ class AppData {
         'Lists & Arrays',
         'Your First Mini Project',
       ],
+      content: [
+        'A computer is a machine that follows instructions to solve problems and store information. It has a brain (the CPU), memory (RAM) to think with, and storage to remember things long-term.',
+        'In programming, data types tell the computer what kind of information it is working with — like numbers (int), decimals (float), words (string), or true/false values (boolean). Using the right type keeps your code working correctly.',
+        'A variable is like a labelled box that stores information for later use. In Python, you might write name = "Amir" to store a name, then use it anywhere in your code.',
+        'A loop tells the computer to repeat an action multiple times without you writing it over and over. A "for loop" can print numbers 1 to 100 in just two lines of code instead of a hundred!',
+        'If/Else statements let your program make decisions. "If it is raining, bring an umbrella, else wear sunglasses" — computers use this same logic to react differently depending on conditions.',
+        'A function is a reusable block of code that performs one task, like a mini-recipe you can use again and again. Instead of rewriting code, you just call the function whenever you need it.',
+        'A list (or array) stores multiple pieces of information together in order, like a shopping list. You can add, remove, or look up items in a list using their position number.',
+        'Now it is time to combine everything you have learned — variables, loops, and functions — into one small project, like a simple quiz or calculator. That is how real programmers build bigger things, one small piece at a time!',
+      ],
       experiments: [
         'Identify CPU, RAM and storage in your device settings',
         'Print your name, age and favourite colour in Python',
@@ -187,6 +239,16 @@ class AppData {
         'Persuasive Writing',
         'Poetry & Rhythm',
         'Summarising & Note-taking',
+      ],
+      content: [
+        'Reading for understanding means not just seeing the words, but really thinking about what they mean. Try to picture the story in your mind and ask yourself questions as you go, like "why did that happen?"',
+        'A great sentence has a subject (who or what) and a verb (the action). Mixing short and long sentences keeps your writing interesting to read — try starting sentences in different ways too!',
+        'A paragraph is a group of sentences about one main idea. A good paragraph usually starts with a topic sentence, adds supporting details, and stays focused on that single idea.',
+        'Punctuation marks like full stops, commas, and question marks help readers understand your writing. Grammar is the set of rules for how words fit together correctly in a sentence.',
+        'Creative writing is your chance to imagine anything — new worlds, characters, and adventures. There are no wrong ideas, just let your imagination lead the way!',
+        'Persuasive writing tries to convince someone to agree with your opinion. Strong persuasive writing uses clear reasons, examples, and sometimes emotional appeals to make its point.',
+        'Poetry uses rhythm, sound, and carefully chosen words to express feelings and ideas in a special way. Not all poems rhyme — some just use powerful, vivid language.',
+        'Summarising means taking a big piece of information and shrinking it down to the most important points, using your own words. Good note-taking helps you remember and understand what you have learned.',
       ],
       experiments: [
         'Read a page of any book and summarise it in 3 sentences',
@@ -220,6 +282,16 @@ class AppData {
         'Clay & Sculpture',
         'Collage & Mixed Media',
       ],
+      content: [
+        'Colour theory helps artists understand how colours work together. Red, blue, and yellow are primary colours — mixing them creates every other colour you can imagine!',
+        'Drawing from observation means really looking at something and drawing exactly what you see, not what you think it looks like. This trains your eye to notice small details.',
+        'Rhythm is the pattern of beats in music, like a steady heartbeat. Clapping along to a song is a simple way to feel rhythm in action.',
+        'Composition in photography is how you arrange things in your photo. The "rule of thirds" suggests placing your subject slightly off-centre for a more interesting, balanced photo.',
+        'Digital art uses tools like tablets or phones instead of paper and paint. The same art principles apply — colour, shape, and composition — just with new digital tools.',
+        'A good story needs a beginning, a problem, and an ending. Scripts are stories written specifically to be performed, with dialogue for characters to say out loud.',
+        'Sculpture is art you can create in three dimensions, using materials like clay, wood, or metal. Clay is soft and easy to shape with your hands before it hardens.',
+        'Collage is the art of combining different materials — paper, photos, fabric — into one new piece of art. Mixed media means using more than one type of art material together.',
+      ],
       experiments: [
         'Mix red, blue and yellow paint — what colours do you make?',
         'Draw your own hand exactly as you see it',
@@ -249,6 +321,16 @@ class AppData {
         'Healthy Habits & Sleep',
         'Communication Skills',
         'Problem Solving',
+      ],
+      content: [
+        'Managing your time means planning how you spend your hours so you have time for school, fun, and rest. Writing a simple daily plan can help you feel less rushed and more in control.',
+        'Basic cooking skills, like making toast or boiling an egg, help you become more independent. Always follow kitchen safety rules and ask an adult before using the cooker or oven.',
+        'Budgeting means planning how to spend and save your money wisely. If you get pocket money, deciding how much to save and how much to spend teaches you valuable money habits early.',
+        'Reading a map helps you understand where you are and how to get where you are going. Learning to navigate without relying only on a phone builds a useful lifelong skill.',
+        'First aid is simple help you can give someone who is hurt before proper medical help arrives. Knowing basics like how to clean a small cut can make a real difference.',
+        'Healthy habits like drinking water, eating balanced meals, and getting enough sleep help your body and brain work their best. Sleep especially helps you learn and remember things better.',
+        'Good communication means clearly sharing your thoughts and truly listening to others. It is a skill that helps in friendships, family, and later in every job you will ever have.',
+        'Problem solving means breaking a big challenge into smaller, manageable steps. The next time something feels too hard, try asking "what is the very first small step I could take?"',
       ],
       experiments: [
         'Plan every hour of tomorrow before you go to sleep',
@@ -280,6 +362,16 @@ class AppData {
         'Make a Quiz in Scratch',
         'Introduction to HTML',
         'Your Own Mini Website',
+      ],
+      content: [
+        'Scratch is a free coding tool where you snap together coloured blocks instead of typing text, making it a fun way to learn how programs think. It was designed especially to help beginners learn coding logic.',
+        'In Scratch, a "sprite" is a character or object you can control. By snapping together simple movement blocks, you can make your sprite walk, jump, or dance across the screen.',
+        'Adding sound brings your project to life! You can record your own voice, choose from a sound library, or add background music to make your Scratch project feel complete.',
+        'A simple game usually needs a goal, a challenge, and a way to win or lose. Even a basic "catch the falling object" game uses the same core ideas as much bigger games.',
+        'Animation is the illusion of movement created by showing a quick sequence of slightly different images. In Scratch, changing a sprite\'s costume rapidly creates simple animations.',
+        'A quiz game asks questions and checks if the answer is correct. Building one in Scratch teaches you how programs can ask, wait, and respond — key programming ideas.',
+        'HTML is the basic language used to build webpages. Simple tags tell the browser what to show, like <h1> for a big heading or <p> for a paragraph of text.',
+        'Once you know a little HTML, you can build your very own simple webpage about anything you love — your favourite animal, hobby, or game. It is the first step toward building for the real internet!',
       ],
       experiments: [
         'Go to scratch.mit.edu and make a cat walk across the screen',
