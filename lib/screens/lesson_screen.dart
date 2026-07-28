@@ -17,36 +17,25 @@ class LessonScreen extends StatefulWidget {
 }
 
 class _LessonScreenState extends State<LessonScreen> with TickerProviderStateMixin {
-  bool _videoStarted = false;
-  bool _videoFinished = false;
+  bool _readComplete = false;
   String? _ahaResponse;
   late ConfettiController _confetti;
-  late AnimationController _pulseCtrl;
-  late Animation<double> _pulse;
 
   @override
   void initState() {
     super.initState();
     _confetti = ConfettiController(duration: const Duration(seconds: 3));
-    _pulseCtrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 800))
-      ..repeat(reverse: true);
-    _pulse = Tween(begin: 0.95, end: 1.05).animate(
-        CurvedAnimation(parent: _pulseCtrl, curve: Curves.easeInOut));
   }
 
   @override
   void dispose() {
     _confetti.dispose();
-    _pulseCtrl.dispose();
     super.dispose();
   }
 
-  void _startVideo() {
-    setState(() => _videoStarted = true);
+  void _markRead() {
+    setState(() => _readComplete = true);
     context.read<AppProvider>().completeVideo(widget.subject.name);
-    Future.delayed(const Duration(seconds: 3), () {
-      if (mounted) setState(() => _videoFinished = true);
-    });
   }
 
   void _ahaAnswer(String type) async {
@@ -58,7 +47,7 @@ class _LessonScreenState extends State<LessonScreen> with TickerProviderStateMix
     if (mounted) {
       final messages = {
         'yes': '🎉 Brilliant! Stamp earned! Moving to next topic!',
-        'sort': '👍 That\'s totally fine! Watch it once more or try tomorrow.',
+        'sort': '👍 That\'s totally fine! Read it once more or try tomorrow.',
         'no': '💛 No worries! Let\'s try a simpler way — you\'ve got this!',
       };
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -74,6 +63,7 @@ class _LessonScreenState extends State<LessonScreen> with TickerProviderStateMix
   Widget build(BuildContext context) {
     final s = widget.subject;
     final topic = s.topics[widget.topicIndex];
+    final lessonText = s.content[widget.topicIndex];
     final experiment = s.experiments[widget.topicIndex];
     final disclaimer = s.disclaimers[widget.topicIndex % s.disclaimers.length];
 
@@ -88,56 +78,39 @@ class _LessonScreenState extends State<LessonScreen> with TickerProviderStateMix
           ListView(
             padding: const EdgeInsets.all(16),
             children: [
-              GestureDetector(
-                onTap: !_videoStarted ? _startVideo : null,
-                child: Container(
-                  height: 220,
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [Color(0xFF1A1040), Color(0xFF3B0EA6)],
-                    ),
-                    borderRadius: BorderRadius.circular(16),
+              // Reading card (replaces video)
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft, end: Alignment.bottomRight,
+                    colors: [Color(s.color), Color(s.color).withOpacity(0.75)],
                   ),
-                  child: Stack(children: [
-                    Positioned(top: 12, left: 12, child: Container(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Row(children: [
+                    Container(
                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                      decoration: BoxDecoration(color: Color(s.color), borderRadius: BorderRadius.circular(20)),
+                      decoration: BoxDecoration(color: Colors.white.withOpacity(0.25), borderRadius: BorderRadius.circular(20)),
                       child: Text('${s.icon} ${s.name}',
                           style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.w800)),
-                    )),
-                    Positioned(bottom: 12, right: 12, child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                      decoration: BoxDecoration(color: Colors.black54, borderRadius: BorderRadius.circular(6)),
-                      child: const Text('15:00', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700)),
-                    )),
-                    Center(child: _videoStarted
-                        ? Column(mainAxisSize: MainAxisSize.min, children: [
-                            const CircularProgressIndicator(color: Colors.white),
-                            const SizedBox(height: 12),
-                            Text(_videoFinished ? '✅ Video complete!' : 'Loading your lesson...',
-                                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600)),
-                          ])
-                        : ScaleTransition(
-                            scale: _pulse,
-                            child: Column(mainAxisSize: MainAxisSize.min, children: [
-                              Container(
-                                width: 68, height: 68,
-                                decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-                                child: const Icon(Icons.play_arrow, color: AppTheme.purple, size: 36),
-                              ),
-                              const SizedBox(height: 10),
-                              const Text('Tap to start', style: TextStyle(color: Colors.white70, fontSize: 13)),
-                            ]),
-                          )),
+                    ),
+                    const Spacer(),
+                    const Icon(Icons.menu_book_rounded, color: Colors.white70, size: 20),
+                    const SizedBox(width: 4),
+                    const Text('~3 min read', style: TextStyle(color: Colors.white70, fontSize: 12, fontWeight: FontWeight.w600)),
                   ]),
-                ),
+                  const SizedBox(height: 16),
+                  Text(topic, style: GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.w700, color: Colors.white)),
+                  const SizedBox(height: 12),
+                  Text(lessonText, style: const TextStyle(color: Colors.white, fontSize: 15, height: 1.6)),
+                ]),
               ),
               const SizedBox(height: 16),
-              Text(topic, style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w700)),
-              const SizedBox(height: 10),
               Wrap(spacing: 8, runSpacing: 6, children: [
                 _tag(context.read<AppProvider>().user?.level ?? 'Level 3', AppTheme.purple, AppTheme.purpleLight),
-                _tag('⏱ 15 min', AppTheme.teal, AppTheme.tealLight),
+                _tag('📖 Reading', AppTheme.teal, AppTheme.tealLight),
                 _tag(s.name, Color(s.color), Color(s.lightColor)),
               ]),
               const SizedBox(height: 16),
@@ -167,7 +140,21 @@ class _LessonScreenState extends State<LessonScreen> with TickerProviderStateMix
                 ]),
               ),
               const SizedBox(height: 20),
-              if (_videoStarted) ...[
+              if (!_readComplete)
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: _markRead,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(s.color),
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    ),
+                    child: const Text('✅ I read this!', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15)),
+                  ),
+                ),
+              if (_readComplete) ...[
                 const Text('Did that make sense?',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
                 const SizedBox(height: 10),
@@ -178,14 +165,7 @@ class _LessonScreenState extends State<LessonScreen> with TickerProviderStateMix
                   const SizedBox(width: 8),
                   Expanded(child: _ahaBtn('no', '😕 Not\nyet', AppTheme.coral, AppTheme.coralLight)),
                 ]),
-              ] else
-                Container(
-                  padding: const EdgeInsets.all(14),
-                  decoration: BoxDecoration(color: AppTheme.purpleLight, borderRadius: BorderRadius.circular(10)),
-                  child: const Text('👆 Watch the video first, then answer!',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: AppTheme.purple, fontWeight: FontWeight.w600)),
-                ),
+              ],
               const SizedBox(height: 80),
             ],
           ),
