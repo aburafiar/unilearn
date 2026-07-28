@@ -109,6 +109,13 @@ class AppProvider extends ChangeNotifier {
     return done / totalTopics;
   }
 
+  Future<void> switchCategory(String category) async {
+    if (_user == null) return;
+    _user!.category = category;
+    await _user!.save();
+    notifyListeners();
+  }
+
   double get attendanceRate {
     if (_user == null || _user!.attendance.isEmpty) return 0;
     final present = _user!.attendance.values.where((v) => v == 'present').length;
